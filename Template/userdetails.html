@@ -1,0 +1,210 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body{
+        background-image: url('Img/carousel1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .container{
+          margin: 20px;
+         
+      }
+      #col{
+        border: 3px solid green;
+        width:200px;
+      }
+      #typedesign{
+        border:3px solid rgb(11, 61, 63);
+        width: 100%;
+        
+      }
+      #rows{
+        width: 100%;
+        background-color:rgb(226, 216, 216);
+        
+      }
+    p{
+      text-align: center;
+     color: black;
+      font-size: 16px;
+    }
+    .copyright {
+    font-family: Arial,
+         "Helvetica Neue",
+         Helvetica,
+         sans-serif;
+      font-size: 12px;
+      text-align: center;
+      color: black;
+}
+    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <title>Hello, world!</title>
+   
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:rgb(10, 202, 209) ;">
+      <div class="container-fluid">
+
+        
+
+        <a class="navbar-brand" href="#"><img src="{% static 'Img/plus.ico' %}" style="height: 30px; width: 30px;"><span style="color: rgb(109, 68, 221);">KHC</span></a>
+          
+        
+        
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color: green;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="color: green;" href="https://g.page/kk-healthcare-vasai-virar?share"><img src="{% static 'Img/directions.png' %}" style="height: 25px; width: 25px;"><span>Get Direction</span></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link active" href="#" style="color: green;" >About Us</a>
+            </li>
+          </ul>
+          
+        </div>
+
+      </div>
+    </nav>
+
+
+
+    <div class="container">
+      <div class="col my-4">
+          <h2>1 - Review Your Cart Items</h2>
+          <div class="my-4">
+              <ul class="list-group" id="items">
+              </ul>
+  
+              <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mt-3">
+      <li class="breadcrumb-item active" aria-current="page">Your Cart amount is <b>Rs. <span id="totalPrice">{{price}}</span></b>. Enter your details below & place your order. Thanks for using KK Cart</li>
+    </ol>
+  </nav>
+  
+  
+  
+              
+          </div>
+      </div>
+      <div class="col my-4">
+          <h2>2 - Enter Address & Other Details:</h2>
+          <form method="post" action="checkout">
+            {% csrf_token %}
+           
+            <input type="hidden" name="pname" value="{{name}}">
+            <input type="hidden" name="pprice" value="{{price}}">
+          
+
+              
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="inputname">Name</label> 
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                  </div>
+                 
+              </div>
+              <div class="form-group">
+                  <label for="inputAddress">Address</label required>
+                  <input type="text" class="form-control" id="address1" name="address" placeholder="101 B Wing xyz building abc nagar Vasai West" required>
+              </div>
+              
+              
+              <div class="form-group">
+                  <label for="inputZip">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Place Order</button>
+          </form>
+      </div>
+  </div>
+
+
+
+
+
+
+    
+    
+    
+   
+  </div>
+
+      <nav class="navbar navbar-light " style="background-color: rgb(109, 221, 212); margin-top: 200px; ">
+        <div class="container-fluid">
+          
+          <div class="container">
+            
+            
+            <div class="row">
+              <div class="col-sm-2">
+                Connect with us
+                </div>
+            <div class="col-sm-1" >
+              
+                <a   href="https://api.whatsapp.com/send?phone=+919324834912&text=Hello K K Health Care!"><img src="{% static 'Img/whats.png' %}" style="height: 30px; width: 30px;"></a>
+              </div>
+              <div class="col-sm-1">
+                <a  href="tel:+919324834912"><img src="{% static 'Img/Phoneicon.png' %}" style="height: 30px; width: 30px;"></a>
+              </div>
+              <div class="col-sm-1">
+                <a  href="mailto:satishkpandey08@gmail.com"><img src="{% static 'Img/Mail.png' %}" style="height: 30px; width: 30px;"></a>
+              </div>
+
+              
+            </div>
+
+          </div>
+           
+        </div>
+      </nav>
+
+    
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+
+      
+
+
+      <div style="background-color: rgb(201, 212, 212);  text-align: center;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <p style="text-align: center;">K K Health Care</p>
+            <p style="text-align: center;">10, Om Sai Milan Coop Hsg Society,Oswal Nagari</p>
+            <p style="text-align: center;"> Nalasopara East, Maharashtra, Palghar-401209 </p>
+        </div>
+    </div>
+     
+
+       <span class="copyright" style="margin-left: 10px;" >Copyright &copy; All rights reserved | K K Health Care</span> 
+  </body>
+</html>
+
+
+
+
+
+
+

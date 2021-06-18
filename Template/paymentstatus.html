@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+<div class="container">
+    {{response}}
+    <div class="col my-4">
+
+        <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+        {{user}}
+        {% if response.RESPCODE == '01' %}
+        
+        <p style="color: green;">ORDER SUCCESS</p>
+        {% else %}
+        ORDER FAILURE
+        {{user}}
+        {% endif%}
+        <form action="products" method="post" name="redirec">
+            {% csrf_token %}
+
+            
+        </form>
+    </div>
+
+</div>
+</body>
+
+
+<script>
+
+setTimeout(function() { document.redirec.submit() }, 12000);
+  
+</script>
+</html>

@@ -1,0 +1,229 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      
+      .cartno{
+        position:absolute;
+        bottom:15px;
+        left: 20px;
+        font-size: medium;
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+        padding-top: 0.6px;
+        padding-bottom: 0.6px;
+        border: 2px solid red;
+        background-color: red;
+      }
+      body{
+        background-image: url('Img/carousel1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .container{
+          margin: 20px;
+         
+      }
+      #col{
+        border: 3px solid green;
+        width:200px;
+      }
+      #typedesign{
+        border:3px solid rgb(11, 61, 63);
+        width: 100%;
+        
+      }
+      #rows{
+        width: 100%;
+        background-color:rgb(226, 216, 216);
+        
+      }
+    p{
+      text-align: center;
+     color: black;
+      font-size: 16px;
+    }
+    .copyright {
+    font-family: Arial,
+         "Helvetica Neue",
+         Helvetica,
+         sans-serif;
+      font-size: 12px;
+      text-align: center;
+      color: black;
+}
+    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <title>Hello, world!</title>
+   
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:rgb(10, 202, 209) ;">
+      <div class="container-fluid">
+
+        
+
+        <a class="navbar-brand" href="#"><img src="{% static 'Img/plus.ico' %}" style="height: 30px; width: 30px;"><span style="color: rgb(109, 68, 221);">KHC</span></a>
+          
+        
+        
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color: green;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" style="color: green;" href="https://g.page/kk-healthcare-vasai-virar?share"><img src="{% static 'Img/directions.png' %}" style="height: 25px; width: 25px;"><span>Get Direction</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a> 
+
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+              -->
+              <a class="nav-link active" id="cart" href="{% url 'cart' %}">
+                <img class="img-responsive" src="{% static 'Img/cart.png' %}" >
+                {% if user.is_authenticated and cartno > 0 %}
+                <h1 style="color: rebeccapurple;" class="cartno">{{cartno}}</h1>
+                {% endif %}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'aboutus' %}" style="color: green;" >About Us</a>
+            </li>
+          </ul>
+          
+        </div>
+
+      </div>
+    </nav>
+
+{% for val,val2 in datazip %}
+<div class="container" id="typedesign">
+  <h6>{{val2}}</h6>
+    {% for type in val %}
+    
+      <div class="row" id="rows">
+        {% for medi in type %}
+        <div class="col" id="col">
+          <div class="col-sm-3">
+            
+              <img src="/media/{{medi.pimage}}" style="height: 100px; width: 100px;">
+          </div>
+          <div class="col-sm-3">
+            <h6>{{medi.pname}}</h6>
+            <h6>{{medi.pprice}}</h6>
+            <h6>{{medi.pwt}}</h6>
+          </div>
+        </div>
+      {% endfor %}
+          
+      </div>
+
+
+    {% endfor %}
+  </div>
+<!-- 
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{% static 'Img/img4.jpeg' %}">
+        </div>
+        <div class="col-sm-4">
+            <img src="{% static 'Img/img5.jpeg' %}">
+        </div>
+        <div class="col-sm-4">
+            <img src="{% static 'Img/img6.jpeg' %}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="Img/img7.jpeg">
+        </div>
+        <div class="col-sm-4">
+            <img src="Img/img8.jpeg">
+        </div>
+        <div class="col-sm-4">
+            <img src="Img/img9.jpeg">
+        </div>
+    </div>
+    -->
+
+
+</div>
+{% endfor %}
+    
+    
+    
+   
+  </div>
+
+      <nav class="navbar navbar-light " style="background-color: rgb(109, 221, 212); margin-top: 200px; ">
+        <div class="container-fluid">
+          
+          <div class="container">
+            
+            
+            <div class="row">
+              <div class="col-sm-2">
+                Connect with us
+                </div>
+            <div class="col-sm-1" >
+              
+                <a   href="https://api.whatsapp.com/send?phone=+919324834912&text=Hello K K Health Care!"><img src="{% static 'Img/whats.png' %}" style="height: 30px; width: 30px;"></a>
+              </div>
+              <div class="col-sm-1">
+                <a  href="tel:+919324834912"><img src="{% static 'Img/Phoneicon.png' %}" style="height: 30px; width: 30px;"></a>
+              </div>
+              <div class="col-sm-1">
+                <a  href="mailto:satishkpandey08@gmail.com"><img src="{% static 'Img/Mail.png' %}" style="height: 30px; width: 30px;"></a>
+              </div>
+
+              
+            </div>
+
+          </div>
+           
+        </div>
+      </nav>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+
+      
+
+
+      <div style="background-color: rgb(201, 212, 212);  text-align: center;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <p style="text-align: center;">K K Health Care</p>
+            <p style="text-align: center;">10, Om Sai Milan Coop Hsg Society,Oswal Nagari</p>
+            <p style="text-align: center;"> Nalasopara East, Maharashtra, Palghar-401209 </p>
+        </div>
+    </div>
+     
+
+       <span class="copyright" style="margin-left: 10px;" >Copyright &copy; All rights reserved | K K Health Care</span> 
+  </body>
+</html>
