@@ -93,7 +93,7 @@ def checkout(request):
             addr=request.POST.get('address',False)
             ph=request.POST.get('phone',False)
             x=orders(name=usname,email=request.user.email,address=addr,phone=ph,pname=prname,pprice=prprice)
-            oid=x.id  
+            oid+=1
 
 
             
