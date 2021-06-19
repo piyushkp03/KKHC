@@ -17,7 +17,6 @@ cartno=0
 cartemail=""
 z=[]
 cartorbuy1=''
-oid=1
 
 prname=''
 prprice=''
@@ -40,12 +39,12 @@ def yourorders(request):
 
 def buydirect():
     print("Direct buy details are:",usname,addr, prname,ph, prprice)
-    x=orders(name=usname,email=cartemail,address=addr,phone=ph,pid='xx'+str(oid),pname=prname,pprice=prprice)
+    x=orders(name=usname,email=cartemail,address=addr,phone=ph,pid='xy'+str(oid),pname=prname,pprice=prprice)
     x.save()
 def buyfromcart():
     datas=usercart.objects.filter(email=cartemail)
     for x in datas:
-        y=orders(name=usname,email=cartemail,address=addr,phone=ph,pid='xx'+str(oid),pname=x.pname,pprice=x.pprice)
+        y=orders(name=usname,email=cartemail,address=addr,phone=ph,pid='xy'+str(oid),pname=x.pname,pprice=x.pprice)
         y.save()
     datas.delete()
 
@@ -53,7 +52,7 @@ def buyfromcart():
 
 @csrf_exempt
 def handlerequest(request):
-    global oid
+   
    
     # paytm will send you post request here
     form = request.POST
@@ -73,7 +72,7 @@ def handlerequest(request):
                 buydirect()
                 #usercart.objects.filter(email=cartemail).delete()
             print('order successful')
-            oid+=1         
+                    
             
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
@@ -103,7 +102,7 @@ def checkout(request):
             param_dict = {
 
                         'MID': 'yIjMtl03527914536186',
-                        'ORDER_ID': 'XX'+str(oid),
+                        'ORDER_ID': 'XY'+str(x.id),
                         'TXN_AMOUNT': str(prprice),
                         'CUST_ID': cartemail,
                         'INDUSTRY_TYPE_ID': 'Retail',
