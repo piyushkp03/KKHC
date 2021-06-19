@@ -81,12 +81,12 @@ def handlerequest(request):
 
 
 def checkout(request):
-    global cartemail,prname,prprice,usname,addr,ph,oid 
+    global prname,prprice,usname,addr,ph,oid 
     if request.method=='POST':
         if request.user.is_authenticated:
         
-            cartemail=request.user.email
-            print(cartemail)
+            
+            print("Inside without updating",cartemail)
 
             prname=request.POST.get('pname',False)
             prprice=request.POST.get('pprice',False)
@@ -133,11 +133,12 @@ def index(request):
         return render(request,"index.html",{'cartno':cartno})
     return render(request,"index.html")
 def userdetails(request):
-    global cartorbuy1
+    global cartorbuy1, cartemail
     if not request.user.is_authenticated:
         messages.error(request,"Please login to shop...")
         return redirect('home')
-    if request.method== 'POST':
+    if request.method== 'POST': 
+        cartemail=request.user.email
 
        
         pname=request.POST.get('pname', False)
