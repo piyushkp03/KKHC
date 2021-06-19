@@ -90,14 +90,14 @@
 
     <div class="container">
       <div class="col my-4">
-          <h2>1 - Review Your Cart Items</h2>
+       
           <div class="my-4">
               <ul class="list-group" id="items">
               </ul>
   
               <nav aria-label="breadcrumb">
     <ol class="breadcrumb mt-3">
-      <li class="breadcrumb-item active" aria-current="page">Your Cart amount is <b>Rs. <span id="totalPrice">{{price}}</span></b>. Enter your details below & place your order. Thanks for using KK Cart</li>
+      <li class="breadcrumb-item active" aria-current="page">Your total amount is <b>Rs. <span id="totalPrice">{{price}}</span></b>. Enter your details below & place your order. Thanks for using KK Cart</li>
     </ol>
   </nav>
   
@@ -107,7 +107,7 @@
           </div>
       </div>
       <div class="col my-4"> 
-        <h2>Oid:{{pid}} Email: {{mailid}} Bought from :{{cartorbuy}}</h2>
+      
           <h2>2 - Enter Address & Other Details:</h2>
           <form method="post" action="checkout">
             {% csrf_token %}
