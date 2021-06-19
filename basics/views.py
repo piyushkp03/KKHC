@@ -17,7 +17,7 @@ cartno=0
 cartemail=""
 z=[]
 cartorbuy1=''
-
+oid=0
 prname=''
 prprice=''
 usname=''
@@ -93,7 +93,7 @@ def checkout(request):
             addr=request.POST.get('address',False)
             ph=request.POST.get('phone',False)
             x=orders(name=usname,email=request.user.email,address=addr,phone=ph,pname=prname,pprice=prprice)
-            
+            oid=x.id  
 
 
             
@@ -102,7 +102,7 @@ def checkout(request):
             param_dict = {
 
                         'MID': 'yIjMtl03527914536186',
-                        'ORDER_ID': 'XY'+str(x.id),
+                        'ORDER_ID': 'XY'+str(oid),
                         'TXN_AMOUNT': str(prprice),
                         'CUST_ID': cartemail,
                         'INDUSTRY_TYPE_ID': 'Retail',
