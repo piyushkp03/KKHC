@@ -81,7 +81,8 @@ def handlerequest(request):
 
 
 def checkout(request):
-    global cartemail,prname,prprice,usname,addr,ph
+    global cartemail,prname,prprice,usname,addr,ph,oid 
+    oid+=1
     if request.method=='POST':
         if request.user.is_authenticated:
         
