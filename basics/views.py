@@ -147,7 +147,7 @@ def userdetails(request):
         print("The price is+",price)
     
 
-
+        print("The data to be checked are",oid, cartorbuy1)
         return render(request,'userdetails.html',{'price':price,'name':pname,'pid':oid,'cartorbuy': cartorbuy1,'mailid': cartemail})
     return render(request,'userdetails.html')
 
