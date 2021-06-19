@@ -148,7 +148,7 @@ def userdetails(request):
     
 
 
-        return render(request,'userdetails.html',{'price':price,'name':pname,'pid':''})
+        return render(request,'userdetails.html',{'price':price,'name':pname,'pid':oid,'cartorbuy': cartorbuy1,'mailid': cartemail})
     return render(request,'userdetails.html')
 
 
