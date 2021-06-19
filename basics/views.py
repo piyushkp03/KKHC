@@ -82,7 +82,6 @@ def handlerequest(request):
 
 def checkout(request):
     global cartemail,prname,prprice,usname,addr,ph,oid 
-    oid+=1
     if request.method=='POST':
         if request.user.is_authenticated:
         
@@ -148,7 +147,7 @@ def userdetails(request):
         print("The price is+",price)
     
 
-        print("The data to be checked are",oid, cartorbuy1)
+        print("The data to be checked are",oid, cartemail,cartorbuy1)
         return render(request,'userdetails.html',{'price':price,'name':pname,'pid':oid,'cartorbuy': cartorbuy1,'mailid': cartemail})
     return render(request,'userdetails.html')
 
