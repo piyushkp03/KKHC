@@ -39,12 +39,12 @@ def yourorders(request):
 
 def buydirect():
     print("Direct buy details are:",usname,addr, prname,ph, prprice)
-    x=orders(name=usname,email=cartemail,address=addr,phone=ph,pid='xy'+str(oid),pname=prname,pprice=prprice)
+    x=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(request.user.email)+str(oid),pname=prname,pprice=prprice)
     x.save()
 def buyfromcart():
     datas=usercart.objects.filter(email=cartemail)
     for x in datas:
-        y=orders(name=usname,email=cartemail,address=addr,phone=ph,pid='xy'+str(oid),pname=x.pname,pprice=x.pprice)
+        y=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(request.user.email)+str(oid),pname=x.pname,pprice=x.pprice)
         y.save()
     datas.delete()
 
@@ -102,7 +102,7 @@ def checkout(request):
             param_dict = {
 
                         'MID': 'yIjMtl03527914536186',
-                        'ORDER_ID': 'XY'+str(oid),
+                        'ORDER_ID': str(request.user.email)+str(oid),
                         'TXN_AMOUNT': str(prprice),
                         'CUST_ID': cartemail,
                         'INDUSTRY_TYPE_ID': 'Retail',
