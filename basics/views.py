@@ -41,14 +41,17 @@ def yourorders(request):
 
 def buydirect():
     print("Direct buy details are:",usname,addr, prname,ph, prprice)
-    x=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(cartemail)+str(oid),pname=prname,pprice=prprice)
+    x=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(cartemail)+str(oid),pname=prname,pprice=prprice) 
+    print("Order from buy direct is :",x)
     x.save()
 def buyfromcart():
-    datas=usercart.objects.filter(email=cartemail)
+    datas=usercart.objects.filter(email=cartemail) 
+
     for x in datas:
-        y=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(cartemail)+str(oid),pname=x.pname,pprice=x.pprice)
+        y=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(cartemail)+str(oid),pname=x.pname,pprice=x.pprice) 
         y.save()
-    datas.delete()
+        print("Orders from buy cart is :",y)
+        datas.delete()
 
 
 
