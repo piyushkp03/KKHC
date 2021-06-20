@@ -17,7 +17,8 @@ cartno=0
 cartemail=""
 z=[]
 cartorbuy1=''
-oid=0
+oid=orders.objects.latest('id') 
+
 prname=''
 prprice=''
 usname=''
