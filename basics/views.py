@@ -124,7 +124,9 @@ def checkout(request):
 
 
 def index(request):
-    global cartno
+    global cartno,p,oid
+    p=orders.objects.last() 
+    oid=p.id
    
     if request.user.is_authenticated:
         print("The user email is at left",request.user.email)
