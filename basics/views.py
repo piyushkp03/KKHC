@@ -17,8 +17,9 @@ cartno=0
 cartemail=""
 z=[]
 cartorbuy1=''
-oid=orders.objects.latest('id') 
-
+p=orders.objects.last() 
+oid=p.id
+print("the last order is ",oid,p)
 prname=''
 prprice=''
 usname=''
