@@ -19,7 +19,7 @@ z=[]
 #cartorbuy1=''
 #p=orders.objects.last() 
 #oid=p.id
-print("the last order is ",oid,p)
+#print("the last order is ",oid,p)
 #prname=''
 #prprice=''
 #usname=''
