@@ -97,10 +97,14 @@ def checkout(request):
             
             print("Inside without updating",cartemail)
 
-            prname=request.POST.get('pname',False)
-            prprice=request.POST.get('pprice',False)
-            usname=request.POST.get('name',False)
-            addr=request.POST.get('address',False)
+            prname=request.POST.get('pname',False) 
+            print (prname)
+            prprice=request.POST.get('pprice',False) 
+            print(prprice)
+            usname=request.POST.get('name',False) 
+            print(usname)
+            addr=request.POST.get('address',False) 
+            print (addr)
             ph=request.POST.get('phone',False)
             print("Checkout details are : ",prname,prprice,usname,adrr,ph,oid)
   
