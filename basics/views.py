@@ -39,12 +39,16 @@ def yourorders(request):
     yorder=orders.objects.filter(email=request.user.email)
     return render(request,'yourorders.html',{'order':yorder})
 
-def buydirect():
+def buydirect(): 
+    p=orders.objects.last() 
+    oid=p.id
     print("Direct buy details are:",usname,addr, prname,ph, prprice)
     x=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(cartemail)+str(oid),pname=prname,pprice=prprice) 
     print("Order from buy direct is :",x)
     x.save()
-def buyfromcart():
+def buyfromcart(): 
+    p=orders.objects.last() 
+    oid=p.id
     datas=usercart.objects.filter(email=cartemail) 
     print("details from the cart bought is:",usname,addr,ph,prname,prprice)
     for x in datas:
@@ -79,7 +83,7 @@ def handlerequest(request):
                 buydirect()
                 #usercart.objects.filter(email=cartemail).delete()
             print('order successful') 
-            oid+=1
+            
                     
             
         else:
@@ -96,6 +100,7 @@ def checkout(request):
             print("last order is:",p) 
 
             oid=p.id 
+            oid+=1
             print("oid is",oid,"current email is", cartemail)
         
             
@@ -182,7 +187,7 @@ def userdetails(request):
 def aboutus(request):
 
     global cartno 
-    print(cartemail,oid, cartorbuy1,prname, prprice, usname,addr,ph)
+   
    
     if request.user.is_authenticated:
         data=usercart.objects.filter(email=request.user.email)
