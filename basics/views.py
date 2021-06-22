@@ -119,7 +119,7 @@ def checkout(request):
             param_dict = {
 
                         'MID': 'yIjMtl03527914536186',
-                        'ORDER_ID': str(request.user.email)+str(oid),
+                        'ORDER_ID': str(request.user.email)+"orderid"+str(oid),
                         'TXN_AMOUNT': str(prprice),
                         'CUST_ID': cartemail,
                         'INDUSTRY_TYPE_ID': 'Retail',
