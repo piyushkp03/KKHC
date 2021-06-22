@@ -97,6 +97,7 @@ def checkout(request):
             usname=request.POST.get('name',False)
             addr=request.POST.get('address',False)
             ph=request.POST.get('phone',False)
+            print("Checkout details are : ",prname,prprice,usname,adrr,ph,oid)
   
             oid+=1
 
