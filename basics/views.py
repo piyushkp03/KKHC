@@ -12,10 +12,10 @@ from paytm import Checksum
 #4389-7600-3507-6969
 
 #totalamt=0
-prolist=[]
+#prolist=[]
 #cartno=0
 #cartemail=""
-z=[]
+#z=[]
 #cartorbuy1=''
 #p=orders.objects.last() 
 #oid=p.id
@@ -223,7 +223,7 @@ def gallery(request):
     return render(request,"gallery.html",{'datazip':datazip,'cartno':cartno})
 
 def products(request):
-    global cartno,searchcalled
+    global cartno,searchcalled,prolist
     searchcalled=False
     prolist=[]
         
@@ -234,8 +234,9 @@ def products(request):
     else:
         data=usercart.objects.filter(email=request.user.email)
         cartno=len(data)
-        print("Number of items in cart",cartno)
+     
         prolist.append(Products.objects.all())
+        print(prolist,"items in acart",cartno)
        
         return render(request,"products.html",{'prolist':prolist,'cartno':cartno})
 def aftersearch(request):
@@ -246,7 +247,7 @@ def aftersearch(request):
 
 
 def searchfield(request):
-    global cartno,prolist,searchcalled
+    global cartno,searchcalled,prolist
     searchcalled=True
     if request.user.is_authenticated:
         data=usercart.objects.filter(email=request.user.email)
