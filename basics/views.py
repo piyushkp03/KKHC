@@ -46,7 +46,7 @@ def buydirect():
     x.save()
 def buyfromcart():
     datas=usercart.objects.filter(email=cartemail) 
-
+    print("details from the cart bought is:",usname,addr,ph,prname,prprice)
     for x in datas:
         y=orders(name=usname,email=cartemail,address=addr,phone=ph,pid=str(cartemail)+str(oid),pname=x.pname,pprice=x.pprice) 
         y.save()
