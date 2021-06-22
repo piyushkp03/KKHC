@@ -62,7 +62,7 @@ def buyfromcart():
 @csrf_exempt
 def handlerequest(request): 
     
-    global oid   
+    global oid,prname, prprice,addr,ph
     oid=oid 
     prname=prname 
     prprice=prprice 
