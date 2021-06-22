@@ -62,12 +62,13 @@ def buyfromcart():
 @csrf_exempt
 def handlerequest(request): 
     
-    global oid,prname, prprice,addr,ph
+    global oid,prname, prprice,addr,ph, cartorbuy1
     oid=oid 
     prname=prname 
     prprice=prprice 
     addr=addr 
-    ph=ph
+    ph=ph 
+    cartorbuy1=cartorbuy1
     print("In handlerequest data's are,", cartorbuy1,usname,prname, prprice,addr,ph,oid)
    
     # paytm will send you post request here
