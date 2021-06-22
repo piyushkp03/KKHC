@@ -365,7 +365,7 @@ def logoutuser(request):
     logout(request)
     messages.success(request,"Logged out")
     return redirect('home')
-print("After adding to cart",set(prolist))
+
 def addtocart(request):
     global cartno
   
