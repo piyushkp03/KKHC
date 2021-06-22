@@ -56,8 +56,9 @@ def buyfromcart():
 
 
 @csrf_exempt
-def handlerequest(request):
-   
+def handlerequest(request): 
+    
+    global oid
    
     # paytm will send you post request here
     form = request.POST
@@ -76,7 +77,8 @@ def handlerequest(request):
             else:
                 buydirect()
                 #usercart.objects.filter(email=cartemail).delete()
-            print('order successful')
+            print('order successful') 
+            oid+=1
                     
             
         else:
@@ -87,7 +89,10 @@ def handlerequest(request):
 def checkout(request):
     global prname,prprice,usname,addr,ph,oid 
     if request.method=='POST':
-        if request.user.is_authenticated:
+        if request.user.is_authenticated: 
+            p=orders.objects.last() 
+
+            oid=p.id
         
             
             print("Inside without updating",cartemail)
@@ -99,7 +104,7 @@ def checkout(request):
             ph=request.POST.get('phone',False)
             print("Checkout details are : ",prname,prprice,usname,adrr,ph,oid)
   
-            oid+=1
+            
 
 
             
