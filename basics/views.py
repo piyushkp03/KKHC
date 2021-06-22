@@ -90,10 +90,13 @@ def handlerequest(request):
 def checkout(request):
     global prname,prprice,usname,addr,ph,oid 
     if request.method=='POST':
-        if request.user.is_authenticated: 
-            p=orders.objects.last() 
+        if request.user.is_authenticated:  
+            print("checking for last order..")
+            p=orders.objects.last()  
+            print("last order is:",p) 
 
-            oid=p.id
+            oid=p.id 
+            print("oid is",oid)
         
             
             print("Inside without updating",cartemail)
