@@ -131,7 +131,7 @@ def index(request):
     global cartno,p,oid 
     m=orders.objects.all() 
     for f in m: 
-        print(m.id,m)
+        print(f.id,f)
     p=orders.objects.last() 
 
     oid=p.id
@@ -159,7 +159,7 @@ def userdetails(request):
         print("The price is+",price)
     
 
-        print("The data to be checked are",oid, "email is:",cartemail,"cart or buy?",cartorbuy1)
+        print("The data to be checked are",oid, "email is:",cartemail,"cart or buy?",cartorbuy1,price)
         return render(request,'userdetails.html',{'price':price,'name':pname,'pid':oid,'cartorbuy': cartorbuy1,'mailid': cartemail})
     return render(request,'userdetails.html')
 
