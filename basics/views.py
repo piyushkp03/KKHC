@@ -128,8 +128,12 @@ def checkout(request):
 
 
 def index(request):
-    global cartno,p,oid
+    global cartno,p,oid 
+    m=orders.objects.all() 
+    for f in m: 
+        print(m.id,m)
     p=orders.objects.last() 
+
     oid=p.id
    
     if request.user.is_authenticated:
