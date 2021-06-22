@@ -164,12 +164,14 @@ def index(request):
         return render(request,"index.html",{'cartno':cartno})
     return render(request,"index.html")
 def userdetails(request):
-    global cartorbuy1, cartemail
+    global cartorbuy1, cartemail,oid
     if not request.user.is_authenticated:
         messages.error(request,"Please login to shop...")
         return redirect('home')
     if request.method== 'POST': 
-        cartemail=request.user.email
+        cartemail=request.user.email 
+        p=orders.objects.last() 
+        oid=p.id
 
        
         pname=request.POST.get('pname', False)
