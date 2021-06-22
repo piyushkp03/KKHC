@@ -58,7 +58,8 @@ def buyfromcart():
 @csrf_exempt
 def handlerequest(request): 
     
-    global oid
+    global oid  
+    print("In handlerequest data's are,", cartorbuy1,usname,prname, prprice,addr,ph,oid)
    
     # paytm will send you post request here
     form = request.POST
