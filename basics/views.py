@@ -96,7 +96,7 @@ def checkout(request):
             print("last order is:",p) 
 
             oid=p.id 
-            print("oid is",oid)
+            print("oid is",oid,"current email is", cartemail)
         
             
             print("Inside without updating",cartemail)
