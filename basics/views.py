@@ -145,6 +145,7 @@ def index(request):
     p=orders.objects.last() 
 
     oid=p.id
+    print("home page data:",cartno,oid,m)
    
     if request.user.is_authenticated:
         print("The user email is at left",request.user.email)
