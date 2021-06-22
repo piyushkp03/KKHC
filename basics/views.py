@@ -11,20 +11,20 @@ from django.views.decorators.csrf import csrf_exempt
 from paytm import Checksum
 #4389-7600-3507-6969
 
-#totalamt=0
+totalamt=0
 #prolist=[]
 cartno=0
-#cartemail=""
+cartemail=""
 #z=[]
-#cartorbuy1=''
+cartorbuy1=''
 #p=orders.objects.last() 
 #oid=p.id
 #print("the last order is ",oid,p)
-#prname=''
-#prprice=''
-#usname=''
-#addr=''
-#ph=''
+prname=''
+prprice=''
+usname=''
+addr=''
+ph=''
 
 # Create your views here.
 MERCHANT_KEY = 'qfJSH_1qdir&3HjO'
