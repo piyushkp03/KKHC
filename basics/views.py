@@ -13,7 +13,7 @@ from paytm import Checksum
 
 #totalamt=0
 #prolist=[]
-#cartno=0
+cartno=0
 #cartemail=""
 #z=[]
 #cartorbuy1=''
@@ -138,7 +138,7 @@ def checkout(request):
 
 
 def index(request):
-    global cartno,p,oid 
+    global cartno,oid 
     m=orders.objects.all() 
     for f in m: 
         print(f.id,f)
