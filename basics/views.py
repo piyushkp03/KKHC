@@ -181,7 +181,8 @@ def userdetails(request):
 
 def aboutus(request):
 
-    global cartno
+    global cartno 
+    print(cartemail,oid, cartorbuy1,prname, prprice, usname,addr,ph)
    
     if request.user.is_authenticated:
         data=usercart.objects.filter(email=request.user.email)
