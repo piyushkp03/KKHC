@@ -29,6 +29,10 @@ ph=''
 # Create your views here.
 MERCHANT_KEY = 'qfJSH_1qdir&3HjO'
 
+def productslist(request):
+    return render(request,"stock.html")
+
+
 def delete(request):
     removeitem=request.POST['remove']
     print(removeitem)
