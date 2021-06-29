@@ -21,6 +21,7 @@ urlpatterns = [
     path('delete',views.delete,name="delete"),
     path('searches',views.aftersearch,name="aftersearch"),
     path('yourorders',views.yourorders,name='yourorders'),
+    path('productslist',views.productslist,name='productslist'),
    
     
     
