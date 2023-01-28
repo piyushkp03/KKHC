@@ -1,4 +1,4 @@
-python==3.11.0
+python==3.11.1
 appdirs==1.4.4
 asgiref==3.3.4
 certifi==2020.12.5
